@@ -1,0 +1,27 @@
+{{ template "layout" }}
+<div class="flex row items-center justify-center w-full text-white py-5 my-5">
+    <form class="w-1/4 flex flex-col" action="/login" method="post">
+        {{ .csrfField }}
+        {{ if .Msg }}
+        <div class="bg-red-500 rounded-md h-10 py-2 my-2 px-2 text-center font-bold">
+            <ul>
+                {{ range .Msg }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+
+        <label for="email" class="my-2 font-bold text-xl">Email address</label>
+        <input type="email" class="my-4 py-2 rounded-md text-black px-2" id="email" name="email">
+        <label for="password" class="my-2 font-bold text-xl">Password</label>
+        <input type="password" class="my-4 py-2  rounded-md text-black px-2" id="password" name="password">
+        <button type="submit"
+            class="bg-neutral-800 hover:bg-neutral-700 text-white font-bold font-mono leading-loose tracking-wider py-2  my-2 px-4 rounded-md">Submit</button>
+    </form>
+
+</div>
+</main>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{{ template "layout" . }}
+<div class="w-full flex flex-col items-center justify-center">
+    {{ if . }}
+    {{ range . }}
+    <h1>{{ .Title }}</h1>
+    {{ template "postCard" . }}
+    {{ end }}
+    {{ else }}
+    <h1>No posts</h1>
+    {{ end }}
+</div>
+
+</main>
+</body>
+<script>
+    document.querySelectorAll('#postContent a').forEach(link => {
+        link.classList.add('text-blue-500', 'hover:text-blue-700');
+    });
+
+
+</script>
+
+</html>

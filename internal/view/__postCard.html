@@ -1,0 +1,21 @@
+{{ define "postCard" }}
+<div id="post-{{ .Id }}"
+    class="shadow-2xl shadow-neutral-900 bg-neutral-950 text-white flex flex-col rounded-md border-2 border-neutral-800 leading-normal w-1/2 overflow-hidden px-5 py-5 h-72 my-8 py-4 px-4">
+    <div class="flex flex-row justify-between mb-3">
+        <h3 id="postTitle" class="font-mono font-bold text-3xl mb-5 ">{{ .Title }}</h3>
+        <p class="font-mono text-sm mb-5 text-xs">{{ .UpdatedAt.Format "02/01/2006 15:04" }}</p>
+    </div>
+    <div id="postContent" class="overflow-hidden h-80"></div>
+    <form action=" /post/view/{{ .Id }}" method="get">
+        <button
+            class="outline outline-neutral-500  outline-2 bg-neutral-800 hover:bg-neutral-700 text-white font-bold font-mono leading-loose tracking-wider py-2 mt-5  my-2 px-4 rounded-md"
+            type="submit" style="float: right;">Read
+            More</button>
+    </form>
+</div>
+<script>
+    document.getElementById('post-{{ .Id }}').querySelector('#postContent').innerHTML = `{{ .Content }}`;
+
+</script>
+
+{{ end }}

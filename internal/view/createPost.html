@@ -1,0 +1,50 @@
+{{ template "adminLayout" }}
+
+<main class="w-full flex flex-col items-center justify-center pl-64 py-10">
+    <div class="w-full flex flex-col text-white justify-center items-center">
+        <form class="w-3/5 flex flex-col bg-neutral-950 px-5 py-5 rounded-md border-2 border-neutral-800 "
+            action="/admin/post/create" method="post" id="postForm">
+            {{ if .Msg }}
+            <div class="bg-red-500 rounded-md py-2 my-2 px-2 text-center font-bold">
+                <ul>
+                    {{ range .Msg }}
+                    <li>{{ . }}</li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+            <label for="title" class="text-2xl mb-4 font-bold">Title</label>
+            <input type="text" class="mb-5 text-black px-3 rounded-md py-2" id="title" name="title"
+                value="{{ .Data.Title }}">
+
+            <label for="content" class="text-2xl mb-4 font-bold">Content</label>
+            <div class="mb-3 text-white" id="editor">
+            </div>
+            <input type="hidden" name="content" id="content">
+            <button type="submit"
+                class="w-1/4  self-center mt-5 outline outline-neutral-500  outline-2 bg-neutral-800 hover:bg-neutral-700 text-white font-bold font-mono leading-loose tracking-wider py-2  my-2 px-4 rounded-md">Submit</button>
+        </form>
+    </div>
+
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script>
+
+        window.addEventListener("load", (event) => {
+            const quill = new Quill('#editor', {
+                theme: 'snow'
+            });
+
+            quill.root.innerHTML = `{{ .Data.Content }}`
+
+            document.getElementById('postForm').addEventListener('submit', function (e) {
+                document.getElementById('content').value = quill.root.innerHTML;
+            });
+        })
+
+    </script>
+</main>
+
+</body>
+
+</html>

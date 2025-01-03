@@ -1,0 +1,26 @@
+{{ define "adminLayout" }}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/fontawesome.css">
+</head>
+
+<body class="font-sans bg-black flex flex-row space-between">
+    <div id="sideNav"
+        class="fixed  border-2 border-neutral-800 top-0 left-0 h-full bg-black text-white overflow-x-hidden transition-all duration-500 z-10 w-64">
+        <div class="pt-16 flex flex-col space-y-4 pl-8 w-full">
+            <i class="fa-regular fa-file"></i>
+            <a href="/home"
+                class="drop-shadow-[0_0_10px_rgba(82,82,82,1)] text-2xl hover:text-gray-300 transition font-bold font-mono leading-loose">Home</a>
+            <a href="/admin/dashboard"
+                class="drop-shadow-[0_0_10px_rgba(82,82,82,1)] text-2xl hover:text-gray-300 transition font-bold font-mono leading-loose">Dashboard</a>
+            <a href="/admin/post/create"
+                class="drop-shadow-[0_0_10px_rgba(82,82,82,1)] text-2xl hover:text-gray-300 transition font-bold font-mono leading-loose">Create
+                Post</a>
+        </div>
+    </div>
+
+    {{ end }}
